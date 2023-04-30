@@ -22,8 +22,10 @@ label
 .row
 {
     display: flex;
+    position: relative;
     flex-direction: row;
     margin-top: 24px;
+    width: 100vw;
     justify-content: space-around;
     margin-bottom: 24px;
 }
@@ -32,8 +34,9 @@ label
 {
     background-color: white;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    position: relative;
+    width: 20px;
+    height: 20px;
     padding: 1rem;
     border: 1px solid grey;
     opacity: .7;
