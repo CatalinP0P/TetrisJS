@@ -42,6 +42,10 @@ label
     opacity: .7;
 }
 
+.disable-dbl-tap-zoom {
+    touch-action: manipulation;
+}
+
 #mobileControls
 {
     display: none;
