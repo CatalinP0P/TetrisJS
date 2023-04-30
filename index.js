@@ -7,7 +7,7 @@ var displayWidth = screen.width;
 
 const rows = 20;
 const cols = 10;
-const cellSize = displayWidth / 45;
+const cellSize = 25;
 const cellMargin = 5;
 var score = 0;
 
