@@ -3,9 +3,11 @@ const Context = Canvas.getContext("2d");
 var gameLoop;
 var selectedBlock;
 
+var displayWidth = screen.width;
+
 const rows = 20;
 const cols = 10;
-const cellSize = 50;
+const cellSize = displayWidth / 45;
 const cellMargin = 5;
 var score = 0;
 
@@ -123,32 +125,48 @@ const GameLoop = () =>
     }, 255)
 }
 
+const goLeft = () =>
+{
+    if ( canMoveLeft(selectedBlock) )
+    selectedBlock.Col--;
+}
+
+const goRight = () =>
+{
+    if ( canMoveRight(selectedBlock) )
+        selectedBlock.Col++;
+}
+
+const goDown = () =>
+{
+    selectedBlock.Row++;
+}
+
+const rotate = () =>
+{
+    selectedBlock.grid = rotateMatrixCW(selectedBlock.grid);
+    blockFits(selectedBlock);
+    if ( !blockFits(selectedBlock) )
+        selectedBlock.grid = rotateMatrixCCW(selectedBlock.grid);
+}
+
 window.addEventListener("keydown", (e) =>
 {
     if ( e.code == "KeyA" )
     {
-        if ( canMoveLeft(selectedBlock) )
-            selectedBlock.Col--;
+        goLeft();
     }
     if ( e.code == "KeyD" )
     {
-        if ( canMoveRight(selectedBlock) )
-            selectedBlock.Col++;
+        goRight();
     }
     if ( e.code == "KeyS" )
     {
-        selectedBlock.Row++;
-    }
-    if ( e.code == "Space" )
-    {
-        console.log(selectedBlock.grid);
+        goDown();
     }
     if ( e.code == "KeyR" )  
     {
-        selectedBlock.grid = rotateMatrixCW(selectedBlock.grid);
-        blockFits(selectedBlock);
-        if ( !blockFits(selectedBlock) )
-        selectedBlock.grid = rotateMatrixCCW(selectedBlock.grid);
+        rotate();
     }
 
     if ( checkForContact(selectedBlock) )
@@ -162,4 +180,23 @@ window.addEventListener("keydown", (e) =>
 window.addEventListener("load", () =>
 {
     GameLoop();
+})
+
+window.addEventListener("click", e =>
+{
+    if ( e.target.matches("#left") )
+        goLeft()
+    if ( e.target.matches("#right") )
+        goRight();
+    if ( e.target.matches("#down") )  
+        goDown();
+    if ( e.target.matches("#rotate") ) 
+        rotate();
+
+    if ( checkForContact(selectedBlock) )
+    {
+        placeBlock(selectedBlock);
+        selectedBlock = new blocks[Math.floor(Math.random() * blocks.length - 1) + 1];
+    }
+    drawTemp();
 })

@@ -11,10 +11,43 @@ canvas
 
 label
 {
-    margin-top: 64px;
+    margin-top: 8px;
     color: white;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 700;
-    font-size: 50px;
+    font-size: 3vh;
     display: block;
+}
+
+.row
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
+    justify-content: space-around;
+    margin-bottom: 24px;
+}
+
+.btn
+{
+    background-color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 1rem;
+    border: 1px solid grey;
+    opacity: .7;
+}
+
+#mobileControls
+{
+    display: none;
+}
+
+@media only screen and (max-width: 1000px )
+{
+    #mobileControls
+    {
+        display:flex;
+    }
 }
