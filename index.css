@@ -1,0 +1,20 @@
+body
+{
+    background: linear-gradient(90deg, #513252, #CA4E79);
+    text-align: center;
+}
+
+canvas
+{
+    margin-top: 16px;
+}
+
+label
+{
+    margin-top: 64px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    font-size: 50px;
+    display: block;
+}
